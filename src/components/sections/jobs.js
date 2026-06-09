@@ -141,10 +141,6 @@ const StyledTabPanel = styled.div`
   height: auto;
   padding: 10px 5px;
 
-  ul {
-    ${({ theme }) => theme.mixins.fancyList};
-  }
-
   h3 {
     margin-bottom: 2px;
     font-size: var(--fz-xxl);
@@ -161,6 +157,24 @@ const StyledTabPanel = styled.div`
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-xxs);
+    line-height: 1.5;
   }
 `;
 
@@ -179,8 +193,8 @@ const Jobs = () => {
               location
               range
               url
+              tags
             }
-            html
           }
         }
       }
@@ -244,7 +258,7 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Work Experience</h2>
 
       <div className="inner">
         <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
@@ -272,8 +286,8 @@ const Jobs = () => {
         <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
+              const { frontmatter } = node;
+              const { title, url, company, range, tags } = frontmatter;
 
               return (
                 <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
@@ -288,15 +302,25 @@ const Jobs = () => {
                       <span>{title}</span>
                       <span className="company">
                         &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
+                        {url ? (
+                          <a href={url} className="inline-link">
+                            {company}
+                          </a>
+                        ) : (
+                          <span>{company}</span>
+                        )}
                       </span>
                     </h3>
 
                     <p className="range">{range}</p>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                    {tags && (
+                      <div className="tags">
+                        {tags.map((tag, j) => (
+                          <span key={j} className="tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
                   </StyledTabPanel>
                 </CSSTransition>
               );

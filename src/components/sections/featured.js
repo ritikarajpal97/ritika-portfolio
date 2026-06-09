@@ -83,7 +83,7 @@ const StyledProject = styled.li`
       }
     }
     .project-image {
-      grid-column: 1 / 8;
+      grid-column: 1 / 7;
 
       @media (max-width: 768px) {
         grid-column: 1 / -1;
@@ -186,7 +186,7 @@ const StyledProject = styled.li`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    margin: 15px 0 0;
     padding: 0;
     list-style: none;
 
@@ -195,7 +195,6 @@ const StyledProject = styled.li`
       color: var(--light-slate);
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
-      white-space: nowrap;
     }
 
     @media (max-width: 768px) {
@@ -242,7 +241,7 @@ const StyledProject = styled.li`
 
   .project-image {
     ${({ theme }) => theme.mixins.boxShadow};
-    grid-column: 6 / -1;
+    grid-column: 7 / -1;
     grid-row: 1 / -1;
     position: relative;
     z-index: 1;
@@ -348,7 +347,7 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Projects
       </h2>
 
       <StyledProjectsGrid>
@@ -368,18 +367,17 @@ const Featured = () => {
                       <a href={external}>{title}</a>
                     </h3>
 
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
+                    <div className="project-description">
+                      <div dangerouslySetInnerHTML={{ __html: html }} />
 
-                    {tech.length && (
-                      <ul className="project-tech-list">
-                        {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
-                        ))}
-                      </ul>
-                    )}
+                      {tech.length && (
+                        <ul className="project-tech-list">
+                          {tech.map((tech, i) => (
+                            <li key={i}>{tech}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
 
                     <div className="project-links">
                       {cta && (

@@ -39,6 +39,15 @@ const StyledContactSection = styled.section`
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
+
+  .email-address {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    user-select: all;
+  }
 `;
 
 const Contact = () => {
@@ -60,13 +69,18 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        Although I’m not currently looking for any new opportunities, my inbox is always open.
-        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+        Whether it’s product, AI, new opportunities, or just a good conversation, I’m always down.
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
         Say Hello
       </a>
+
+      <div>
+        <a className="email-address" href={`mailto:${email}`}>
+          {email}
+        </a>
+      </div>
     </StyledContactSection>
   );
 };

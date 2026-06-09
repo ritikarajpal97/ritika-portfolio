@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <!-- "accenture" wordmark in black, ">" arrow in Accenture purple at top-right -->
+  <text x="0" y="82" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="84" fill="#000000" letter-spacing="-3">accenture</text>
+  <polygon points="232,8 268,28 232,48" fill="#A100FF"/>
+</svg>

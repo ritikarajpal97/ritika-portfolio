@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(convert -version)",
+      "Bash(command -v convert)",
+      "Bash(command -v magick)",
+      "Bash(command -v ffmpeg)",
+      "Bash(command -v python3)"
+    ]
+  }
+}
